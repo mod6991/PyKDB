@@ -50,7 +50,8 @@ def sym_encrypt_file(input_file, output_file, cipher, buffer_size=4096):
     # other data could be read or not
     if not pad_done:
         pad_data = pad(b'', 16, style="pkcs7")
-        output_file.write(pad_data)
+        enc = cipher.encrypt(pad_data)
+        output_file.write(enc)
 
 # Decrypt a file
 def sym_decrypt_file(input_file, output_file, cipher, buffer_size=4096):
